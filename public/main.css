@@ -1,6 +1,11 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; height: 100%; }
 
+.container { width: 100%; height: 100%; }
+@media screen and (min-width: 300px) {
+  .container { width: 300px; margin: 0 auto; }
+}
+
 .profile-wrap {
   width: 100%;
   display: inline-block;
@@ -13,15 +18,15 @@ html, body { margin: 0; padding: 0; height: 100%; }
   padding: 10px;
   margin-right: 10px;
   border-radius: 4px;
-  border: 1px solid silver;
-  background: lightcoral;
+  border: 1px solid rgb(158, 215, 143);
+  background: rgb(108, 179, 89);
 }
 
 input[type='text'], input[type='password'], textarea {
   border-radius: 4px;
   height: 15px;
   padding: 10px;
-  border: 1px solid silver;
+  border: 3px solid rgb(158, 215, 143);
 }
 
 .input-group { margin-bottom: 15px; }
@@ -36,7 +41,7 @@ input[type='text'], input[type='password'], textarea {
     border-radius: 4px;
     background: white;
     border: 1px solid silver;
-    color: crimson;
+    color: rgb(108, 179, 89);
     height: 37px;
     line-height: 37px;
     vertical-align: top;
