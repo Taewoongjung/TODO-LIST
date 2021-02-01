@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>회원가입</title>
+    <style>
+    </style>
+  </head>
+  <body>
+    <div>
+      <form id="signup-form">
+        <fieldset>
+          <legend>사용자 등록</legend>
+          <div><input id="username" type="text" name="name" placeholder="아이디"></div>
+          <div><input id="userpsw" type="password" name="password" placeholder="비번"></div>
+          <div><input id="userpsw_re" type="password" name="check_psw" placeholder="비번 재확인"></div>
+          <button type="submit" id="signup-btn">등록</button>
+        </fieldset>
+      </form>
+    </div>
+  </body>
+  
+  <script>
+    window.onload = () => {
+      const param = (new URL(location.href)).searchParams;
+      const error_param = param.get('error');
+      const success_param = param.get('success');
+      if(error_param){
+        alert(error_param);
+      }
+      else if(success_param){
+        location.href="/";
+      }
+    }
+
+    const signup = document.getElementById('signup-form');
+    const signup_btn = document.getElementById('signup-btn');
+    signup_btn.addEventListener('click', () => {
+      signup.setAttribute('action', '/signup/check-signup');
+      signup.setAttribute('method', 'POST');
+    });
+  </script>
+</html>
