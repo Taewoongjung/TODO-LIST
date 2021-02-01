@@ -3,14 +3,31 @@
   <head>
     <meta charset="utf-8">
     <title>로그인 성공</title>
-    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/todo.css">
   </head>
   <body>
     <div>
-      <h1>Hi {{me}}</h1>
-      <form id="loggedin-form_logout-form">
-        <button type="submit" id="logout-btn" >로그아웃</button>
-      </form>
+      <div id="container">
+        <div>
+            <h1 id="title">{{me}}'s Todo Lists</h1>
+            <input type="text" placeholder="todo" id="todo" name="todo">
+            <input type="submit" value="post" id="post-btn"><br>
+        </div>
+        <table>
+            <thead>
+                <tr id="tr">
+                    <th>todo</th>
+                    <th>modify</th>
+                    <th>done</th>
+                    <th>priority</th>
+                </tr>
+            </thead>
+            <tbody id="todo-list"></tbody>
+        </table>
+        <form id="loggedin-form_logout-form">
+          <button type="submit" id="logout-btn" >로그아웃</button>
+        </form>
+      </div>
     </div>
   </body>
   
