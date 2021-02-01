@@ -14,7 +14,7 @@ router.post('/', async (req, res, next) => {
         authorized: true
     };
     console.log(req.session);
-    res.redirect(307, '/loggedin');
+    res.redirect(307, '/todo');
 });
 
 module.exports = router;

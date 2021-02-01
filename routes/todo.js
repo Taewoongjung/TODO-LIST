@@ -13,14 +13,14 @@ router.post('/', isNotLoggedIn, async (req, res, next) => {
             return next(authError);
         }
         if (!user) {
-            return res.redirect(`/?loginError=${info.message}`);
+            return res.redirect(`/?todoError=${info.message}`);
         }
         return req.login(user, (loginError) => {
             if (loginError) {
                 console.error(loginError);
                 return next(loginError);
-            }
-            return res.render('loggedin', {me: name});
+            }  
+            return res.render('todo', {me: name});
         });
     })(req, res, next);
 });
