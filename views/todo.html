@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>로그인 성공</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/todo.css">
   </head>
   <body>
@@ -12,7 +13,7 @@
           <form id="comment-form">
             <h1 id="title">{{me}}'s Todo Lists</h1>
             <input type="text" placeholder="todo" id="todo" name="todo">
-            <input type="submit" value="post" id="post-btn"><br>
+            <input type="submit" value="등록" id="regi-todo"><br>
           </form>
         </div>
         <table>
@@ -24,13 +25,15 @@
                     <th>priority</th>
                 </tr>
             </thead>
-            <tbody id="todo-list"></tbody>
+          <ul id="todo-list">
+            <li>Hello, World!</li>
+          </ul>
         </table>
       </div>
     </div>
-    <br>
-    <br>
-    <table id="comment-list">
+    <!-- <br>
+    <br> -->
+    <!-- <table id="comment-list"> -->
       <!-- <thead>
       <tr>
         <th>할 일</th>
@@ -38,7 +41,7 @@
         <th></th>
       </tr>
       </thead> -->
-      <tbody>
+      <!-- <tbody>
         {% for comments in comments %}
         <tr>
           <td>{{comments.comment}}</td>
@@ -48,16 +51,9 @@
         </tr>
         {% endfor %}
       </tbody>
-    </table>
+    </table> -->
+
     <br>
-    <script>
-      const tbody = document.querySelector('tbody');
-      tbody.innerHTML = '';
-    </script>
+    <script src="/todo.js"></script>
   </body>
-  
-  <script>
-    const regist_todo = docunment.getElementById("comment-form")
-  </script>
-  
 </html>

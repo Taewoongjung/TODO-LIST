@@ -48,7 +48,7 @@ router.get('/home', async (req, res, next) => {
 
 router.get('/todo', async (req, res, next) => {
     const { name } = req.body;
-    return res.render('todo', {me: name});
+    res.render('todo', {me: name});
 })
 
 module.exports = router;

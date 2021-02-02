@@ -12,6 +12,10 @@ module.exports = class Comment extends Sequelize.Model {
                 allowNull: true,
                 defaultValue: Sequelize.NOW,
             },
+            order: {
+                type: Sequelize.INTEGER,
+                defaultValue: 0,
+            }
         }, {
             sequelize,
             timestamps: false,

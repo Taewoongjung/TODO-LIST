@@ -25,25 +25,5 @@ router.post('/', isNotLoggedIn, async (req, res, next) => {
     })(req, res, next);
 });
 
-router.get('/home', async (req, res, next) => {
-    try{
-        if(req.session && req.session.user) {
-            req.session.destroy(
-                function (err) {
-                    if (err){
-                        console.log('세션 삭제시 에러');
-                        return;
-                    }
-                res.clearCookie('cookie-session');
-                console.log('세션, 쿠키 삭제 성공');
-                res.redirect('/');
-                }
-            )
-        }
-    } catch(err){
-        console.error(err);
-        next(err);
-    }
-});
 
 module.exports = router;
