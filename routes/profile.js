@@ -46,9 +46,12 @@ router.get('/home', async (req, res, next) => {
     }
 });
 
-router.get('/todo', async (req, res, next) => {
+router.get('/gotolist', async (req, res, next) => {
     const { name } = req.body;
-    res.render('todo', {me: name});
+    const id = req.user.id;
+    console.log('>>>');
+    console.log('여기서 보내기 : ', id);
+    res.redirect('/todo');
 })
 
 module.exports = router;

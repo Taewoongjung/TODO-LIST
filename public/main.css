@@ -6,7 +6,7 @@ html, body { margin: 0; padding: 0; height: 100%; }
   .container { width: 300px; margin: 0 auto; }
 }
 
-#login-btn, #join-btn, #signup-btn, #logout-btn {
+#login-btn, #join-btn, #signup-btn, #logout-btn, #todo-btn {
     display: inline-block;
     padding: 0 5px;
     text-decoration: none;

@@ -3,11 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>로그인 성공</title>
-    <style>
-    </style>
+    <link rel="stylesheet" href="/main.css">
   </head>
   <body>
-    <div>
+    <!-- <div>
       <form id="todo_logout">
         <h1>Hi {{me}}</h1>
         <button type="submit" id="todo-btn">TODO LIST</button>
@@ -15,21 +14,36 @@
       </form>
     </div>
   </body>
-  
-  <script>
-    const todo_logout = document.getElementById('todo_logout');
-    const logout_btn = document.getElementById('logout-btn');
-    const todo_btn = document.getElementById('todo-btn');
-    logout_btn.addEventListener('click', () => {
-      todo_logout.setAttribute('action', '/profile/home');
-      todo_logout.setAttribute('method', 'GET');
-    });
+   -->
 
-    todo_btn.addEventListener('click', () => {
-      todo_logout.setAttribute('action', '/profile/todo');
-      todo_logout.setAttribute('method', 'GET');
-    })
-
-  </script>
+    <div class="container">
+      <div class="profile-wrap">
+        <div class="profile">
+          <form id="todo_logout">
+            <fieldset>
+              <legend>로그인</legend>
+              <h1>Hi {{me}}</h1>
+              <button type="submit" id="todo-btn">TODO LIST</button>
+              <button type="submit" id="logout-btn">로그아웃</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
   
+    <script>
+      const todo_logout = document.getElementById('todo_logout');
+      const logout_btn = document.getElementById('logout-btn');
+      const todo_btn = document.getElementById('todo-btn');
+      logout_btn.addEventListener('click', () => {
+        todo_logout.setAttribute('action', '/profile/home');
+        todo_logout.setAttribute('method', 'GET');
+      });
+
+      todo_btn.addEventListener('click', () => {
+        todo_logout.setAttribute('action', '/profile/gotolist');
+        todo_logout.setAttribute('method', 'GET');
+      });
+    </script>
+  </body>
 </html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>로그인 성공</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="/todo.css">
   </head>
   <body>
@@ -11,20 +11,20 @@
       <div id="container">
         <div>
           <form id="comment-form">
-            <h1 id="title">{{me}}'s Todo Lists</h1>
+            <h1 id="title">s Todo Lists</h1>
             <input type="text" placeholder="todo" id="todo" name="todo">
             <input type="submit" value="등록" id="regi-todo"><br>
           </form>
         </div>
         <table>
-            <thead>
-                <tr id="tr">
-                    <th>todo</th>
-                    <th>modify</th>
-                    <th>done</th>
-                    <th>priority</th>
-                </tr>
-            </thead>
+          <thead>
+              <tr id="tr">
+                  <th>todo</th>
+                  <th>modify</th>
+                  <th>done</th>
+                  <th>priority</th>
+              </tr>
+          </thead>
           <ul id="todo-list">
             <li>Hello, World!</li>
           </ul>
@@ -54,6 +54,7 @@
     </table> -->
 
     <br>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/todo.js"></script>
   </body>
 </html>

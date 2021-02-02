@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = class Comment extends Sequelize.Model {
+module.exports = class Todo extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             comment: {
@@ -19,8 +19,8 @@ module.exports = class Comment extends Sequelize.Model {
         }, {
             sequelize,
             timestamps: false,
-            modelName: 'Comment',
-            tableName: 'comments',
+            modelName: 'Todo',
+            tableName: 'todo',
             paranoid: false,
             charset: 'utf8mb4',
             collate: 'utf8mb4_general_ci',
@@ -28,6 +28,6 @@ module.exports = class Comment extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Comment.belongsTo(db.User, { foreignKey: 'commenter', targetKey: 'id'});
+        db.Todo.belongsTo(db.User, { foreignKey: 'commenter', targetKey: 'id'});
     }
 };
