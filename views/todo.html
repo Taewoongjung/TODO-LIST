@@ -9,9 +9,11 @@
     <div>
       <div id="container">
         <div>
+          <form id="comment-form">
             <h1 id="title">{{me}}'s Todo Lists</h1>
             <input type="text" placeholder="todo" id="todo" name="todo">
             <input type="submit" value="post" id="post-btn"><br>
+          </form>
         </div>
         <table>
             <thead>
@@ -24,20 +26,38 @@
             </thead>
             <tbody id="todo-list"></tbody>
         </table>
-        <form id="loggedin-form_logout-form">
-          <button type="submit" id="logout-btn" >로그아웃</button>
-        </form>
       </div>
     </div>
+    <br>
+    <br>
+    <table id="comment-list">
+      <!-- <thead>
+      <tr>
+        <th>할 일</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead> -->
+      <tbody>
+        {% for comments in comments %}
+        <tr>
+          <td>{{comments.comment}}</td>
+          <td><button>내용수정</button></td>
+          <td><button>삭제</button></td>
+          <td><button>순위</button></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <script>
+      const tbody = document.querySelector('tbody');
+      tbody.innerHTML = '';
+    </script>
   </body>
   
   <script>
-    const loggedin = document.getElementById('loggedin-form_logout-form');
-    const logout_btn = document.getElementById('logout-btn');
-    logout_btn.addEventListener('click', () => {
-      loggedin.setAttribute('action', '/todo/home');
-      loggedin.setAttribute('method', 'GET');
-    });
+    const regist_todo = docunment.getElementById("comment-form")
   </script>
   
 </html>
