@@ -17,5 +17,4 @@ router.post('/', async (req, res, next) => {
     console.log(req.session);
     res.redirect(307, '/profile');
 });
-
 module.exports = router;
