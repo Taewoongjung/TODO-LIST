@@ -7,42 +7,38 @@
     <link rel="stylesheet" href="/todo.css">
   </head>
   <body>
-    <div>
-      <div id="container">
-        <div>
-          <form id="comment-form">
-            <h1 id="title">s Todo Lists</h1>
-            <input type="text" placeholder="todo" id="todo" name="todo">
-            <input type="submit" value="등록" id="regi-todo"><br>
-          </form>
-        </div>
-        <table>
-          <thead>
-              <tr id="tr">
-                  <th>todo</th>
-                  <th>modify</th>
-                  <th>done</th>
-                  <th>priority</th>
-              </tr>
-          </thead>
-          <ul id="todo-list">
-            <li>Hello, World!</li>
-          </ul>
-        </table>
+    <div id="container">
+      <div>
+        <form id="comment-form">
+          <h1 id="title">s Todo Lists</h1>
+          <input type="text" placeholder="todo"id="todo" name="todo">
+          <input type="submit" value="등록"id="regi-todo"><br>
+        </form>
       </div>
+      <table>
+        <thead>
+            <tr id="tr">
+                <th>todo</th>
+                <th>modify</th>
+                <th>done</th>
+                <th>priority</th>
+            </tr>
+        </thead>
+        <tbody id="todo-list"></tbody>
+    </table>
     </div>
-    <!-- <br>
-    <br> -->
-    <!-- <table id="comment-list"> -->
-      <!-- <thead>
+    <br>
+    <br>
+    <!-- <table id="comment-list">
+      <thead>
       <tr>
         <th>할 일</th>
         <th></th>
         <th></th>
       </tr>
-      </thead> -->
-      <!-- <tbody>
-        {% for comments in comments %}
+      </thead>
+      <tbody>
+        {% for comments in users %}
         <tr>
           <td>{{comments.comment}}</td>
           <td><button>내용수정</button></td>
