@@ -18,21 +18,4 @@ router.post('/', async (req, res, next) => {
     res.redirect(307, '/profile');
 });
 
-// router.get('/:id/comments', async (req, res, next) => {
-//     try {
-//       console.log('aas');
-//       const todo = await Todo.findAll({
-//         include: {
-//           model: User,
-//           where: { id: req.params.id },
-//         },
-//       });
-//       console.log(todo);
-//       res.json(todo);
-//     } catch (err) {
-//       console.error(err);
-//       next(err);
-//     }
-//   });
-
 module.exports = router;

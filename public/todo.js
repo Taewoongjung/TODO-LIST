@@ -48,6 +48,7 @@ submit.addEventListener('click', () => {
 document.getElementById('comment-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const todo = e.target.todo.value;
+    
     try {
       await axios.post('/todo', { todo });
     } catch (err) {
