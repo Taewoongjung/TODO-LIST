@@ -6,8 +6,11 @@ const Todo = require('../models/todo');
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
-    const { name } = req.body;
-    res.render('todo', {me: name});
+    const { name, id } = req.user;
+    
+    console.log('todo에 들어와서 name: ', name);
+    console.log('todo에 들어와서 id: ', id);
+    res.render('todo', {me: name, id});
 })
 
 router.get('/showlist', async (req, res, next) => {

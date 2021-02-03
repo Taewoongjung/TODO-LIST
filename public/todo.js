@@ -48,13 +48,24 @@ submit.addEventListener('click', () => {
 document.getElementById('comment-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const todo = e.target.todo.value;
-    
     try {
       await axios.post('/todo', { todo });
+      getComment();
     } catch (err) {
       console.error(err);
     }
-
     e.target.todo.value = '';
 });
-  
+
+async function getComment(){
+    const id = "<%= id %>";
+    const res = await axios.get(`/users/${id}/comments`);
+    const comments = res.data;
+    const tbody = document.querySelector('#comment-list tbody');
+    tbody.innerHTML = '';
+    comments.map(function (comment) {
+      td = document.createElement('th');
+      td.textContent = comment.comment;
+      row.appendChild(td);
+    })
+}

@@ -10,21 +10,21 @@
     <div id="container">
       <div>
         <form id="comment-form">
-          <h1 id="title">s Todo Lists</h1>
+          <h1 id="title">{{me}}'s Todo Lists</h1>
           <input type="text" placeholder="todo"id="todo" name="todo">
           <input type="submit" value="등록"id="regi-todo"><br>
         </form>
       </div>
-      <table>
+      <table id="comment-list">
         <thead>
-            <tr id="tr">
-                <th>todo</th>
-                <th>modify</th>
-                <th>done</th>
-                <th>priority</th>
-            </tr>
+        <tr id="tr">
+            <th>todo</th>
+            <th>modify</th>
+            <th>done</th>
+            <th>priority</th>
+        </tr>
         </thead>
-        <tbody id="todo-list"></tbody>
+        <tbody></tbody>
     </table>
     </div>
     <br>
