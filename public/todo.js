@@ -45,29 +45,15 @@ submit.addEventListener('click', () => {
     });
 });
 
-// var submit = document.getElementById('regi-todo');
-// var input = document.getElementById('todo');
-// var list = document.getElementById('todo-list');
-
-// submit.addEventListener('click', clickButton);
-
-// function clickButton() {
-//   var temp = document.createElement('li');
-//   temp.innerHTML = input.value;
-//   list.appendChild(temp);
-// }
-
-
 document.getElementById('comment-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    // const id = e.target.userid.value;
     const todo = e.target.todo.value;
     try {
       await axios.post('/todo', { todo });
     } catch (err) {
       console.error(err);
     }
-    // e.target.userid.value = '';
+
     e.target.todo.value = '';
 });
   
