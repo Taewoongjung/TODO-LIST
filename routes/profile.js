@@ -25,6 +25,11 @@ router.post('/', isNotLoggedIn, async (req, res, next) => {
     })(req, res, next);
 });
 
+router.get('/', async (req, res, next) => {
+    const { name } = req.user;
+    res.render('profile', {me: name});
+})
+
 router.get('/home', async (req, res, next) => {
     try{
         if(req.session && req.session.user) {
@@ -47,7 +52,6 @@ router.get('/home', async (req, res, next) => {
 });
 
 router.get('/gotolist', async (req, res, next) => {
-    const { name } = req.body;
     const id = req.user.id;
     console.log('>>>');
     console.log('여기서 보내기 : ', id);

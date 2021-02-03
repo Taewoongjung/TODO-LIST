@@ -7,10 +7,10 @@ const router = express.Router();
 
 router.get('/', async (req, res, next) => {
     const { name, id } = req.user;
-    
+
     console.log('todo에 들어와서 name: ', name);
     console.log('todo에 들어와서 id: ', id);
-    res.render('todo', {me: name, id});
+    res.render('todo', {me: name, id:id});
 })
 
 router.get('/showlist', async (req, res, next) => {
@@ -26,6 +26,7 @@ router.get('/showlist', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     const id = req.user.id;
+    console.log('여기 안들어온다고?');
     console.log('this : ', id);
     try{
         const todo = await Todo.create({
@@ -38,6 +39,18 @@ router.post('/', async (req, res, next) => {
         console.log(err);
         next(err);
     }
+})
+
+router.delete('/delete', async (req, res, next) => {
+    const id = req.body.todo_id;
+    console.log('이거 : ', id);
+    Todo.destroy({where: {id}});
+    res.send();
+})
+
+router.get('/go-back', async (req, res) => {
+
+    res.redirect('/profile');
 });
 
 module.exports = router;

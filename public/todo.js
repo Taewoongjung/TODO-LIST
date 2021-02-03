@@ -1,3 +1,12 @@
+const createBtn = (type, attribute, value) => {
+    const btn = document.createElement('input');
+    btn.setAttribute('type', type);
+    if(value !== null){
+        btn.setAttribute(attribute, value);
+    }
+    return btn;
+}
+
 const createTodo = (lists, i) => {
     const row = document.createElement('tr');
     let td = document.createElement('th');
@@ -14,6 +23,31 @@ const createTodo = (lists, i) => {
     td.textContent = row_data.comment;
     td.className="todo"
     row.appendChild(td);
+
+
+    const del = createBtn('submit', 'value', 'delete');
+    del.addEventListener('click', async () => {
+        const erase = new XMLHttpRequest();
+        erase.open('DELETE', '/todo/delete');
+        const todo_id = data_id;
+        const req_del = {todo_id};
+        erase.setRequestHeader('Content-Type', 'application/json');
+        erase.send(JSON.stringify(req_del));
+        erase.addEventListener('load', () => {});
+        //delete a todo row in html
+        const useless_tag = del.parentNode;
+        useless_tag.parentNode.removeChild(useless_tag);
+    })
+    td = document.createElement('td');
+    del.className = "todo-btn";
+    td.append(del);
+    row.append(del);
+
+    td = document.createElement('td');
+    td.className = "user-id";
+    td.innerText = row_data.id;
+    row.appendChild(td);
+    return row;       
 }
 
 window.onload = () => {
@@ -23,7 +57,9 @@ window.onload = () => {
     xhr.send();
     xhr.addEventListener('load', () => {
         const lists = JSON.parse(xhr.responseText);
-        const tbody = document.querySelector('todo-list');
+        console.log("전송 됨? : ", lists);
+        const tbody = document.querySelector('#todo-list');
+        console.log("맞음? : ", tbody);
         for(let i = 0; i < lists.todo.length; i++){
             tbody.appendChild(createTodo(lists, i));
         }
@@ -34,38 +70,15 @@ const todo = document.getElementById('todo-list');
 const todo_context = document.getElementById('todo');
 const submit = document.getElementById('regi-todo');
 submit.addEventListener('click', () => {
+    let data = {'todo': todo_context.value};
+    data = JSON.stringify(data);
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/todo');
     xhr.setRequestHeader('Content-type', 'application/json');
-
+    xhr.send(data);
     const tbody = document.querySelector('todo-list');
     xhr.addEventListener('load', () => {
         const list = JSON.parse(xhr.responseText);
         tbody.appendChild(createTodo(list, null));
     });
 });
-
-document.getElementById('comment-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const todo = e.target.todo.value;
-    try {
-      await axios.post('/todo', { todo });
-      getComment();
-    } catch (err) {
-      console.error(err);
-    }
-    e.target.todo.value = '';
-});
-
-async function getComment(){
-    const id = "<%= id %>";
-    const res = await axios.get(`/users/${id}/comments`);
-    const comments = res.data;
-    const tbody = document.querySelector('#comment-list tbody');
-    tbody.innerHTML = '';
-    comments.map(function (comment) {
-      td = document.createElement('th');
-      td.textContent = comment.comment;
-      row.appendChild(td);
-    })
-}
