@@ -24,7 +24,6 @@ const createTodo = (lists, i) => {
     td.className="todo"
     row.appendChild(td);
 
-
     const del = createBtn('submit', 'value', 'delete');
     del.addEventListener('click', async () => {
         const erase = new XMLHttpRequest();
@@ -43,11 +42,11 @@ const createTodo = (lists, i) => {
     td.append(del);
     row.append(del);
 
-    td = document.createElement('td');
-    td.className = "user-id";
-    td.innerText = row_data.id;
-    row.appendChild(td);
-    return row;       
+    // td = document.createElement('td');
+    // td.className = "user-id";
+    // td.innerText = row_data.id;
+    // row.appendChild(td);
+    return row;
 }
 
 window.onload = () => {
