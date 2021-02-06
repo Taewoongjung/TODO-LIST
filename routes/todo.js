@@ -26,7 +26,6 @@ router.get('/showlist', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     const id = req.user.id;
-    console.log('여기 안들어온다고?');
     console.log('this : ', id);
     try{
         const todo = await Todo.create({
@@ -43,7 +42,6 @@ router.post('/', async (req, res, next) => {
 
 router.delete('/delete', async (req, res, next) => {
     const id = req.body.todo_id;
-    console.log('이거 : ', id);
     Todo.destroy({where: {id}});
     res.send();
 })

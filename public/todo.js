@@ -32,7 +32,6 @@ const createTodo = (lists, i) => {
         const req_del = {todo_id};
         erase.setRequestHeader('Content-Type', 'application/json');
         erase.send(JSON.stringify(req_del));
-        erase.addEventListener('load', () => {});
         //delete a todo row in html
         const useless_tag = del.parentNode;
         useless_tag.parentNode.removeChild(useless_tag);
@@ -42,10 +41,6 @@ const createTodo = (lists, i) => {
     td.append(del);
     row.append(del);
 
-    // td = document.createElement('td');
-    // td.className = "user-id";
-    // td.innerText = row_data.id;
-    // row.appendChild(td);
     return row;
 }
 
@@ -56,9 +51,7 @@ window.onload = () => {
     xhr.send();
     xhr.addEventListener('load', () => {
         const lists = JSON.parse(xhr.responseText);
-        console.log("전송 됨? : ", lists);
         const tbody = document.querySelector('#todo-list');
-        console.log("맞음? : ", tbody);
         for(let i = 0; i < lists.todo.length; i++){
             tbody.appendChild(createTodo(lists, i));
         }
