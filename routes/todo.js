@@ -40,6 +40,27 @@ router.post('/', async (req, res, next) => {
     }
 })
 
+router.put('/edit', (req, res, next) => {
+    const connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'Wjdxodnd1@',
+        database: 'mynode',
+    });
+    const prev_todo = req.body;
+    connection.connect();
+    let a = req.body;
+    connection.query(
+        `UPDATE todo SET comment="${a.new_todo}" WHERE id=${a.todo_id}`,
+        (err, results, fields) => {
+            console.log(err);
+            console.log(results);
+            console.log(fields);
+        }
+    )
+    res.send(); 
+})
+
 router.delete('/delete', async (req, res, next) => {
     const id = req.body.todo_id;
     Todo.destroy({where: {id}});
@@ -55,6 +76,24 @@ router.put('/done', (req, res, next) => {
             next(err);
         });
 });
+
+router.put('/order', async (req, res, next) => {
+    try{
+        const {
+            prev_id,
+            prev_order,
+            new_id,
+            new_order,
+        } = req.body;
+        console.log(prev_id, prev_order, new_id, new_order);
+        await Todo.update({order: new_order}, {where: {id: prev_id}});
+        await Todo.update({order: preve_order}, {where: {id: new_id}});
+        res.send();
+    }
+    catch(err){
+        consolel.log(err);
+    }
+})
 
 router.get('/go-back', async (req, res) => {
 
