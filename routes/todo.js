@@ -46,6 +46,16 @@ router.delete('/delete', async (req, res, next) => {
     res.send();
 })
 
+router.put('/done', (req, res, next) => {
+    const {todo_id, checked} = req.body;
+    Todo.update({done: checked}, {where: {id: todo_id}})
+        .then(res.send())
+        .catch(err => {
+            console.log(err);
+            next(err);
+        });
+});
+
 router.get('/go-back', async (req, res) => {
 
     res.redirect('/profile');

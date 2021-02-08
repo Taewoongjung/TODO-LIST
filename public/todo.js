@@ -32,6 +32,7 @@ const createTodo = (lists, i) => {
         const req_del = {todo_id};
         erase.setRequestHeader('Content-Type', 'application/json');
         erase.send(JSON.stringify(req_del));
+        erase.addEventListener('load', () => {});
         //delete a todo row in html
         const useless_tag = del.parentNode;
         useless_tag.parentNode.removeChild(useless_tag);
@@ -41,6 +42,36 @@ const createTodo = (lists, i) => {
     td.append(del);
     row.append(del);
 
+    const done = createBtn('checkbox', 'checked', null);
+    done.addEventListener('click', () => {
+        const finish = new XMLHttpRequest();
+        let checked;
+        finish.open('PUT', 'todo/done');
+        if(done.hasAttribute('checked')){
+            checked = false;
+            done.removeAttribute('checked');
+        }
+        else{
+            checked = true;
+            done.setAttribute('checked', true);
+        }
+        const todo_id = data_id;
+        const req_done = {
+            todo_id,
+            checked,
+        };
+        finish.setRequestHeader('Content-type', 'application/json');
+        finish.send(JSON.stringify(req_done));
+        // finish.addEventListener('load', () => {});
+    });
+    if(row_data.done){
+        done.setAttribute('checked', 'true');
+    }
+    done.className = "todo-btn";
+    td.appendChild(done);
+    row.appendChild(td);
+    const priority = createBtn('text', 'placeholder', todo_priority++);
+    
     return row;
 }
 
