@@ -96,6 +96,7 @@ const createTodo = (lists, i) => {
     edit.className = "todo-btn"
     td.appendChild(edit);
     row.appendChild(edit);
+
     
     const priority = createBtn('text', 'placeholder', todo_priority++);
     ids.set(todo_priority - 1, data_id);
