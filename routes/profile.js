@@ -40,6 +40,7 @@ router.get('/home', async (req, res, next) => {
                     }
                 res.clearCookie('cookie-session');
                 console.log('세션, 쿠키 삭제 성공');
+                req.logout();
                 res.redirect('/');
                 }
             )

@@ -88,15 +88,13 @@ router.put('/order', async (req, res, next) => {
         console.log(prev_id, prev_order, new_id, new_order);
         await Todo.update({order: new_order}, {where: {id: prev_id}});
         await Todo.update({order: preve_order}, {where: {id: new_id}});
-        res.send();
-    }
-    catch(err){
+        resq
+    } catch(err){
         consolel.log(err);
     }
-})
+});
 
 router.get('/go-back', async (req, res) => {
-
     res.redirect('/profile');
 });
 

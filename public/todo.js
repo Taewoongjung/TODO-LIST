@@ -67,7 +67,7 @@ const createTodo = (lists, i) => {
         };
         finish.setRequestHeader('Content-type', 'application/json');
         finish.send(JSON.stringify(req_done));
-        // finish.addEventListener('load', () => {});
+        finish.addEventListener('load', () => {});
     });
     if(row_data.done){
         done.setAttribute('checked', 'true');
