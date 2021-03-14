@@ -19,7 +19,6 @@ router.get('/showlist', async (req, res, next) => {
     console.log('이거 : ', id);
     const lists = await Todo.findAll({
         where: {commenter: id},
-        // order: ['order'],
     });
     res.send(JSON.stringify({ len: lists.length, todo: lists }));
 })
